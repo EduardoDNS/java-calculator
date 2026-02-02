@@ -59,13 +59,17 @@ public class Program {
 				}
 			}
 			
-			
-			Calculator calc = new Calculator(op1, op2);
-			switch(signal) {
-				case '+': System.out.printf("%.2f%n", calc.sum()); break;
-				case '-': System.out.printf("%.2f%n", calc.sum()); break;
-				case '*': System.out.printf("%.2f%n", calc.sum()); break;
-				case '/': System.out.printf("%.2f%n", calc.sum()); break;
+			if(op2 == 0 && signal == '/') {
+				System.out.println("Cannot be divided by 0");
+			}
+			else {
+				Calculator calc = new Calculator(op1, op2);
+				switch(signal) {
+					case '+': System.out.printf("%.2f%n", calc.sum()); break;
+					case '-': System.out.printf("%.2f%n", calc.sub()); break;
+					case '*': System.out.printf("%.2f%n", calc.mult()); break;
+					case '/': System.out.printf("%.2f%n", calc.div()); break;
+				}
 			}
 			
 			checkLoop = true;
