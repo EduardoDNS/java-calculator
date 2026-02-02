@@ -20,7 +20,7 @@ public class Program {
 		boolean repeat = true;
 		while(repeat == true) {
 			boolean checkNumber = true;
-			while(checkNumber == true) {
+			while(checkNumber) {
 				checkNumber = false;
 				System.out.print("Entry number¹: ");
 				try {
@@ -32,7 +32,7 @@ public class Program {
 			}
 			
 			checkNumber = true;
-			while(checkNumber == true) {
+			while(checkNumber) {
 				checkNumber = false;
 				System.out.print("Entry number²: ");
 				try {
@@ -43,41 +43,33 @@ public class Program {
 				}
 			}
 			
-			boolean checkSignal = true;
-			while(checkSignal == true) {
-				checkSignal = false;
+			boolean checkLoop = true;
+			while(checkLoop) {
+				checkLoop = false;
 				System.out.println("Choose a signal (+, -, *, /)");
 				try {
 					signal = scan.nextLine().charAt(0);
 				}catch(java.lang.NumberFormatException e){
 					System.out.println("Invalid entry!");
-					checkSignal = true;
+					checkLoop = true;
 				}
 				if(signal != '+' && signal != '-' && signal != '*' && signal != '/') {
 					System.out.println("Invalid entry!");
-					checkSignal = true;
+					checkLoop = true;
 				}
 			}
 			
-			if(signal == '+') {
-				Calculator calc = new Calculator(op1, op2);
-				System.out.printf("%.2f%n", calc.sum());
-			}
-			if(signal == '-') {
-				Calculator calc = new Calculator(op1, op2);
-				System.out.printf("%.2f%n", calc.sub());
-			}
-			if(signal == '*') {
-				Calculator calc = new Calculator(op1, op2);
-				System.out.printf("%.2f%n", calc.mult());
-			}
-			if(signal == '/') {
-				Calculator calc = new Calculator(op1, op2);
-				System.out.printf("%.2f%n", calc.div());
+			
+			Calculator calc = new Calculator(op1, op2);
+			switch(signal) {
+				case '+': System.out.printf("%.2f%n", calc.sum()); break;
+				case '-': System.out.printf("%.2f%n", calc.sum()); break;
+				case '*': System.out.printf("%.2f%n", calc.sum()); break;
+				case '/': System.out.printf("%.2f%n", calc.sum()); break;
 			}
 			
-			boolean checkLoop = true;
-			while(checkLoop == true) {
+			checkLoop = true;
+			while(checkLoop) {
 				checkLoop = false;
 				char loop = ' ';
 				try {
@@ -88,11 +80,11 @@ public class Program {
 					}
 				}catch(java.lang.NumberFormatException e) {
 					System.out.println("Invalid entry!");
-					checkSignal = true;
+					checkLoop = true;
 				}
 				if(loop != 'n' && loop != 'y') {
 					System.out.println("Invalid entry!");
-					checkSignal = true;
+					checkLoop = true;
 				}
 			}
 		}
